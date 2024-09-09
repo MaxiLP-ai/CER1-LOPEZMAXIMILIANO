@@ -1,0 +1,109 @@
+<!-- Solicitud de Reciclaje -->
+<!DOCTYPE html>
+<html lang="es">
+<head id="head-placeholder">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="container mt-5">
+    <h1>Solicitud de Reciclaje</h1>
+
+    <form id="productForm">
+
+      <div class="mb-3">
+        <label for="productCategory" class="form-label">Categoría de Residuo</label>
+        <select class="form-select" id="productCategory" required>
+          <option value="" disabled selected>Selecciona una categoría</option>
+          <option value="electronics">Electrónica</option>
+          <option value="clothing">Ropa</option>
+          <option value="home">Hogar</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="productSubcategory" class="form-label">Subcategoría de Residuo</label>
+        <select class="form-select" id="productSubcategory" required>
+          <option value="" disabled selected>Selecciona una subcategoría</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Nombre Completo (Opcional)</label>
+        <input type="text" class="form-control" id="fullName" placeholder="Tu nombre completo">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico (Opcional)</label>
+        <input type="email" class="form-control" id="email" placeholder="Tu correo electrónico">
+      </div>
+
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Número de Teléfono (Opcional)</label>
+        <input type="tel" class="form-control" id="phoneNumber" placeholder="Tu número de teléfono">
+      </div>
+
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Cantidad</label>
+        <input type="number" class="form-control" id="quantity" placeholder="Número de unidades" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+    <div id="alertPlaceholder" class="mt-3"></div>
+
+  </div>
+
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#head-placeholder").load("./inc/head.html");
+      $("#navbar-placeholder").load("./inc/navbar.html");
+
+      $('#productCategory').change(function() {
+        var category = $(this).val();
+        var subcategories = {
+          electronics: ['Teléfonos', 'Computadoras', 'Cámaras'],
+          clothing: ['Camisas', 'Pantalones', 'Chaquetas'],
+          home: ['Muebles', 'Electrodomésticos', 'Decoración']
+        };
+        var options = '<option value="" disabled selected>Selecciona una subcategoría</option>';
+        if (subcategories[category]) {
+          $.each(subcategories[category], function(index, value) {
+            options += '<option value="' + value.toLowerCase() + '">' + value + '</option>';
+          });
+        }
+        $('#productSubcategory').html(options);
+      });
+
+      $('#productForm').submit(function(event) {
+        event.preventDefault();
+
+        var category = $('#productCategory option:selected').text();
+        var subcategory = $('#productSubcategory option:selected').text();
+        var fullName = $('#fullName').val() || 'NN';
+        var email = $('#email').val() || 'NN';
+        var phoneNumber = $('#phoneNumber').val() || 'NN';
+        var quantity = $('#quantity').val();
+
+        var alertHtml = `
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Datos de la Petición:</strong><br>
+            Categoría: ${category}<br>
+            Subcategoría: ${subcategory}<br>
+            Nombre Completo: ${fullName}<br>
+            Correo Electrónico: ${email}<br>
+            Número de Teléfono: ${phoneNumber}<br>
+            Cantidad: ${quantity}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        `;
+        $('#alertPlaceholder').html(alertHtml);
+      });
+    });
+  </script>
+</body>
+</html>

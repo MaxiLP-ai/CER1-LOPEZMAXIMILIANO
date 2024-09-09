@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Verde</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/personalizado.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('./images/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h1, p {
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <div class="container mt-5">
+    <h1>Bienvenidos a Tienda Verde</h1>
+    <p>Promovemos el reciclaje y productos sostenibles para un mundo mejor.</p>
+  </div>
+
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#navbar-placeholder").load("./inc/navbar.html");
+    });
+  </script>
+</body>
+</html>

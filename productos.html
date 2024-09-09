@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head id="head-placeholder">
+  <title>Galería de Productos</title>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div class="container mt-5">
+    <h1>Nuestros Productos</h1>
+    <div id="productGallery" class="row">
+    </div>
+  </div>
+
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#head-placeholder").load("./inc/head.html");
+
+      $("#navbar-placeholder").load("./inc/navbar.html");
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const productos = [
+        {
+          nombre: 'Teléfono Inteligente - Electrónica',
+          descripcion: 'Pantalla AMOLED de 6.5", cámara de 108 MP, y 5000mAh de batería.',
+          imagen: './images/telefono.jpg'
+        },
+        {
+          nombre: 'Cámara Canon - Electrónica',
+          descripcion: 'Cámara DSLR con 24.1 MP, video 4K y lente de 18-55mm.',
+          imagen: './images/camara.jpg'
+        },
+        {
+          nombre: 'Poleras - Ropa',
+          descripcion: 'Poleras color negro, 100% algodón.',
+          imagen: './images/poleras.jpg'
+        },
+        {
+          nombre: 'Pantalones - Ropa',
+          descripcion: 'Jeans de distintos tipos de azules.',
+          imagen: './images/pantalones.jpg'
+        },
+        {
+          nombre: 'Refigerador - Hogar',
+          descripcion: 'Refrigerador inteligente, con salida de agua y hielo.',
+          imagen: './images/refrigerador.jpg'
+        },
+        {
+          nombre: 'Sillón - Hogar',
+          descripcion: 'Sillón una pieza, tapizado.',
+          imagen: './images/sillon.jpg'
+        }        
+      ];
+      const gallery = document.getElementById('productGallery');
+
+      productos.forEach(producto => {
+        const productCard = `
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+              <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">${producto.descripcion}</p>
+              </div>
+            </div>
+          </div>
+        `;
+
+        gallery.innerHTML += productCard;
+      });
+    });
+  </script>
+</body>
+</html>

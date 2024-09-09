@@ -1,0 +1,26 @@
+/* Barra de Navegación */
+.navbar {
+  background-color: #90ee90; /* Verde claro para la barra de navegación */
+}
+
+.navbar-nav .nav-link {
+  color: white; /* Color del texto de los enlaces */
+}
+
+.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link:hover {
+  color: #2c3e50; /* Color del texto cuando está activo o en hover */
+}
+
+/* Estilo para el menú desplegable */
+.navbar-nav .dropdown-menu {
+  background-color: #90ee90; /* Fondo del menú desplegable */
+}
+
+.navbar-nav .dropdown-item {
+  color: #2c3e50; /* Color del texto de los ítems del menú desplegable */
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: #349f0d; /* Color de fondo del ítem en hover */
+}
